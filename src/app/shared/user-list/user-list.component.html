@@ -1,0 +1,80 @@
+
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>USER LIST</mat-card-title>
+    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+  </mat-card-header>
+  <hr>
+  <div class="example-container  ">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> 
+        <mat-checkbox></mat-checkbox>  
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+        <mat-checkbox></mat-checkbox>  
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
+      </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="address">
+              <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+            </ng-container>
+
+              <!-- Symbol Column -->
+      <ng-container matColumnDef="dob">
+        <mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dob}} </mat-cell>
+      </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="edit">
+                      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                      <mat-cell *matCellDef="let element" style="max-width: 6rem;" (click)="openModal('edit',element)">
+                        <mat-icon>edit</mat-icon>
+                      </mat-cell>
+                    </ng-container>
+
+                                  <!-- Symbol Column -->
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+        <mat-cell *matCellDef="let element" style="max-width: 5rem;" (click)="openModal('delete',element)"> 
+          <mat-icon>delete</mat-icon> </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
+  </div>
+
+</mat-card>
+
